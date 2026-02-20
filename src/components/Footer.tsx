@@ -19,13 +19,6 @@ const navColumns = [
   },
 ];
 
-const offices = [
-  { country: "Pakistan", type: "Global Delivery Center", flag: "🇵🇰", address: "Plot 8, 281 Ghazi Rd, Khuda Buksh Colony KB Society, Lahore, Punjab" },
-  { country: "USA", type: "Regional Office", flag: "🇺🇸", address: "18 S 2nd Street #120, San Jose, CA, 95113, United States" },
-  { country: "UAE", type: "Regional Office", flag: "🇦🇪", address: "34HW+5J5 - Parkside Retail Level - Cluster R - Jumeirah Lakes Towers - Dubai" },
-  { country: "UK", type: "Regional Office", flag: "🇬🇧", address: "128 City Road London EC1V 2NX, United Kingdom" },
-  { country: "KSA", type: "Regional Office", flag: "🇸🇦", address: "3141 Anas Ibn Malik Rd, Al Malqa, Riyadh 13521 KSA" },
-];
 
 const socials = [
   { icon: Facebook, href: "#" },
@@ -87,23 +80,6 @@ export default function Footer() {
 
       {/* ── Divider ── */}
       <div className="border-t" style={{ borderColor: "hsl(var(--navy-light))" }} />
-
-      {/* ── Offices ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {offices.map(({ country, type, flag, address }) => (
-            <div key={country}>
-              <p className="text-white font-semibold text-sm mb-1 flex items-center gap-2">
-                <span className="text-base">{flag}</span>
-                {country}
-                <span className="text-white/40 text-xs font-normal">({type})</span>
-              </p>
-              <p className="text-white/40 text-xs leading-relaxed">{address}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* ── Divider ── */}
       <div className="border-t" style={{ borderColor: "hsl(var(--navy-light))" }} />
 
