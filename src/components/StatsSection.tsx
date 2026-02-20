@@ -34,7 +34,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function StatsSection() {
   return (
-    <section className="py-24 bg-background" id="stats">
+    <section className="py-16 bg-background" id="stats">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
@@ -81,8 +81,6 @@ export default function StatsSection() {
         </div>
       </div>
 
-      {/* Teal gradient fade at bottom */}
-      <div className="mt-24 h-32" style={{ background: "linear-gradient(to bottom, transparent, hsl(172 100% 95%))" }} />
     </section>
   );
 }
