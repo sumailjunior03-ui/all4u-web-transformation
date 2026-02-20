@@ -148,7 +148,7 @@ export default function ServicesSection() {
   const total = allServices.length;
 
   return (
-    <section className="py-24 bg-background" id="services">
+    <section className="py-16 bg-background" id="services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
