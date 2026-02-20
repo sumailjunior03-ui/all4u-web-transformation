@@ -1,28 +1,34 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, CheckCircle, Clock, Shield, Zap } from "lucide-react";
+import { Send, CheckCircle, Globe, Users, Clock, ArrowRight } from "lucide-react";
 
-const contactInfo = [
-  { icon: Mail, label: "Email Us", value: "hello@all4usoftware.com", href: "mailto:hello@all4usoftware.com" },
-  { icon: Phone, label: "Call Us", value: "+1 (800) ALL-4U-IT", href: "tel:+18002554848" },
-  { icon: MapPin, label: "Headquarters", value: "United States & Global Delivery", href: "#" },
+const infoCards = [
+  {
+    icon: Globe,
+    title: "Global Presence",
+    desc: "We're across 5 continents — North America, Middle East, South Asia, Europe & APAC.",
+    cta: "View Offices",
+  },
+  {
+    icon: Users,
+    title: "Global Leaders",
+    desc: "Our capability and competencies are backed by diverse global leadership.",
+    cta: "Meet the Team",
+  },
+  {
+    icon: Clock,
+    title: "72-Hour Guarantee",
+    desc: "Qualified engineers ready to start within 72 hours. NDA signed before any discussion.",
+    cta: "Learn More",
+  },
 ];
 
-const trustPoints = [
-  { icon: Clock, text: "2-hour response guarantee" },
-  { icon: Shield, text: "NDA signed before any discussion" },
-  { icon: Zap, text: "Engineers ready in 72 hours" },
-];
-
-const inputStyle = {
-  background: "hsl(var(--navy-light))",
-  borderColor: "hsl(220 30% 28%)",
-  color: "white",
-};
+const fieldClass =
+  "w-full px-4 py-3 rounded-lg border text-sm outline-none transition-all focus:border-teal focus:ring-1 focus:ring-teal/30 bg-[hsl(180_30%_97%)] border-[hsl(214_25%_88%)] text-foreground placeholder:text-muted-foreground/60";
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", company: "", service: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", service: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,168 +36,143 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="py-24" id="contact" style={{ background: "hsl(var(--navy))" }}>
+    <section className="py-20 bg-white" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-5 gap-16 items-start">
 
-          {/* LEFT — bold pitch */}
+          {/* LEFT — form column (3/5) */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.65 }}
+            className="lg:col-span-3"
           >
-            <p className="section-tag mb-4">Contact Us</p>
-            <h2 className="text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
-              Let's Build{" "}
-              <span className="text-teal">Something</span>{" "}
-              Great Together
-            </h2>
-            <p className="text-white/50 text-lg leading-relaxed mb-10">
-              Ready to transform your business? Tell us what you need and our team will get back to you within 2 hours.
-            </p>
-
-            {/* Trust points */}
-            <div className="space-y-4 mb-12">
-              {trustPoints.map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-3">
-                  <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: "hsl(var(--teal) / 0.15)" }}
-                  >
-                    <Icon className="w-4 h-4 text-teal" />
-                  </div>
-                  <span className="text-white/70 text-sm">{text}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Contact links */}
-            <div className="space-y-5 pt-8 border-t" style={{ borderColor: "hsl(220 30% 18%)" }}>
-              {contactInfo.map(({ icon: Icon, label, value, href }) => (
-                <a key={label} href={href} className="flex items-center gap-4 group">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110"
-                    style={{ background: "hsl(var(--teal) / 0.12)", color: "hsl(var(--teal))" }}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <p className="text-white/40 text-xs">{label}</p>
-                    <p className="text-white font-semibold text-sm">{value}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* RIGHT — form */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <div
-              className="rounded-3xl p-8 lg:p-10"
-              style={{ background: "hsl(var(--navy-mid))", border: "1px solid hsl(220 30% 20%)" }}
+            <p className="section-tag mb-3">Contact Us</p>
+            <h2
+              className="text-5xl lg:text-6xl font-extrabold mb-10 leading-tight"
+              style={{ color: "hsl(var(--teal))" }}
             >
-              {submitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center justify-center text-center py-16"
+              Get In Touch
+            </h2>
+
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center justify-center text-center py-20"
+              >
+                <div
+                  className="w-20 h-20 rounded-full flex items-center justify-center mb-6"
+                  style={{ background: "hsl(var(--teal) / 0.1)" }}
                 >
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center mb-6"
-                    style={{ background: "hsl(var(--teal) / 0.15)" }}
+                  <CheckCircle className="w-10 h-10 text-teal" />
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-3">Message Sent!</h3>
+                <p className="text-muted-foreground">Our team will get back to you within 2 business hours.</p>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Full Name *</label>
+                  <input required type="text" value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="John Smith" className={fieldClass} />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Email *</label>
+                  <input required type="email" value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    placeholder="john@company.com" className={fieldClass} />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Phone Number</label>
+                  <input type="tel" value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    placeholder="+1 (201) 555-0123" className={fieldClass} />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Company Name</label>
+                  <input type="text" value={form.company}
+                    onChange={(e) => setForm({ ...form, company: e.target.value })}
+                    placeholder="Your Company" className={fieldClass} />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Service Needed</label>
+                  <select value={form.service}
+                    onChange={(e) => setForm({ ...form, service: e.target.value })}
+                    className={fieldClass}
+                    style={{ color: form.service ? undefined : "hsl(var(--muted-foreground))" }}
                   >
-                    <CheckCircle className="w-10 h-10 text-teal" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">Message Sent!</h3>
-                  <p className="text-white/50">Our team will get back to you within 2 business hours.</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <h3 className="text-white font-bold text-xl mb-6">Send us a message</h3>
+                    <option value="">Select a service...</option>
+                    <option>Staff Augmentation</option>
+                    <option>Web Development</option>
+                    <option>Mobile App Development</option>
+                    <option>AI & Generative AI</option>
+                    <option>Cybersecurity</option>
+                    <option>Cloud Solutions</option>
+                    <option>UI/UX Design</option>
+                    <option>DevOps & Automation</option>
+                    <option>Custom Software Development</option>
+                    <option>Dynamics 365 ERP / CRM</option>
+                    <option>Blockchain & Web3</option>
+                    <option>Game Development</option>
+                  </select>
+                </div>
 
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-white/60 text-xs font-medium mb-2 uppercase tracking-wide">Full Name *</label>
-                      <input
-                        required type="text" value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        placeholder="John Smith"
-                        className="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all placeholder:text-white/25 focus:border-teal"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-white/60 text-xs font-medium mb-2 uppercase tracking-wide">Work Email *</label>
-                      <input
-                        required type="email" value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        placeholder="john@company.com"
-                        className="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all placeholder:text-white/25 focus:border-teal"
-                        style={inputStyle}
-                      />
-                    </div>
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Project Details *</label>
+                  <textarea required rows={4} value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Tell us about your project, timeline, and budget..."
+                    className={`${fieldClass} resize-none`} />
+                </div>
 
-                  <div>
-                    <label className="block text-white/60 text-xs font-medium mb-2 uppercase tracking-wide">Company</label>
-                    <input
-                      type="text" value={form.company}
-                      onChange={(e) => setForm({ ...form, company: e.target.value })}
-                      placeholder="Your Company Name"
-                      className="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all placeholder:text-white/25 focus:border-teal"
-                      style={inputStyle}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-white/60 text-xs font-medium mb-2 uppercase tracking-wide">Service Needed</label>
-                    <select
-                      value={form.service}
-                      onChange={(e) => setForm({ ...form, service: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all focus:border-teal"
-                      style={{ ...inputStyle, color: form.service ? "white" : "hsl(220 30% 50%)" }}
-                    >
-                      <option value="">Select a service...</option>
-                      <option>Staff Augmentation</option>
-                      <option>Web Development</option>
-                      <option>Mobile App Development</option>
-                      <option>AI & Generative AI</option>
-                      <option>Cybersecurity</option>
-                      <option>Cloud Solutions</option>
-                      <option>UI/UX Design</option>
-                      <option>DevOps & Automation</option>
-                      <option>Custom Software Development</option>
-                      <option>Dynamics 365 ERP / CRM</option>
-                      <option>Blockchain & Web3</option>
-                      <option>Game Development</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-white/60 text-xs font-medium mb-2 uppercase tracking-wide">Project Details *</label>
-                    <textarea
-                      required rows={4} value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="Tell us about your project, timeline, and budget..."
-                      className="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all resize-none placeholder:text-white/25 focus:border-teal"
-                      style={inputStyle}
-                    />
-                  </div>
-
-                  <button type="submit" className="btn-primary w-full justify-center py-4 text-base">
-                    Send Message <Send className="w-4 h-4" />
-                  </button>
-                </form>
-              )}
-            </div>
+                <button type="submit" className="btn-primary px-10 py-3.5 text-base">
+                  Submit <Send className="w-4 h-4" />
+                </button>
+              </form>
+            )}
           </motion.div>
+
+          {/* RIGHT — info cards (2/5) */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, delay: 0.15 }}
+            className="lg:col-span-2 space-y-6 lg:pt-28"
+          >
+            {infoCards.map(({ icon: Icon, title, desc, cta }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="p-6 rounded-2xl border group hover:border-teal transition-all duration-300"
+                style={{ borderColor: "hsl(var(--border))", background: "hsl(var(--secondary) / 0.4)" }}
+              >
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-teal"
+                  style={{ background: "hsl(var(--teal) / 0.1)", color: "hsl(var(--teal))" }}
+                >
+                  <Icon className="w-5 h-5 group-hover:text-white transition-colors duration-300" />
+                </div>
+                <h3 className="font-bold text-foreground text-lg mb-2">{title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">{desc}</p>
+                <button className="flex items-center gap-1.5 text-sm font-semibold text-teal hover:gap-3 transition-all duration-200">
+                  {cta} <ArrowRight className="w-4 h-4" />
+                </button>
+              </motion.div>
+            ))}
+          </motion.div>
+
         </div>
       </div>
     </section>

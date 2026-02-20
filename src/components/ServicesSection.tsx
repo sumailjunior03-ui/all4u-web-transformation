@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import serviceStaff from "@/assets/service-staff.jpg";
 import serviceWeb from "@/assets/service-web.jpg";
 import serviceMobile from "@/assets/service-mobile.jpg";
@@ -102,21 +102,6 @@ function ServiceCard({
           {service.tag}
         </span>
       </div>
-
-      {/* Arrow on hover */}
-      <AnimatePresence>
-        {hovered && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full flex items-center justify-center"
-            style={{ background: "hsl(var(--teal))" }}
-          >
-            <ArrowUpRight className="w-5 h-5 text-white" />
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Content */}
       <div className="absolute bottom-0 left-0 right-0 p-6 z-10">

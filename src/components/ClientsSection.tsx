@@ -10,7 +10,7 @@ export default function ClientsSection() {
   const doubled = [...clients, ...clients];
 
   return (
-    <section className="py-20 overflow-hidden bg-background border-y" style={{ borderColor: "hsl(var(--border))" }}>
+    <section className="py-12 overflow-hidden bg-background border-y" style={{ borderColor: "hsl(var(--border))" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
         <motion.div
           initial={{ opacity: 0 }}
